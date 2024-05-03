@@ -9,8 +9,9 @@ Tested with the *dns_oci* configuration but It should work, the `dnsEnvVariables
 ```yaml
 accountemail: mail@example.com
 acmeprovider: zerossl
-domain: home.example.com
-dnsprovider: dns_cf
+domains:
+  - home.example.com
+dnsprovider: dns_oci
 dnsenvvars:
   - name: OCI_CLI_USER
     value: xxxx
@@ -33,7 +34,7 @@ fullchainfile: fullchain.pem
 keyfile: privkey.pem
 ```
 
-Valid valuews for `acmeprovider`:
+Valid values for `acmeprovider`:
 
 * `letsencrypt`
 * `letsencrypt_test`
