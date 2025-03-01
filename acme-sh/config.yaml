@@ -22,6 +22,7 @@ options:
   domains: null
   dnsprovider: null
   dnschallengealias: ""
+  dnswaittime: 30
   dnsenvvars:
     - name: null
       value: null
@@ -35,6 +36,7 @@ schema:
     - str
   dnsprovider: str
   dnschallengealias: str?
+  dnswaittime: int
   dnsenvvars:
     - name: str
       value: str
