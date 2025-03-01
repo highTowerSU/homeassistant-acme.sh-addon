@@ -41,6 +41,7 @@ DNS_ENV_VARS=$(jq --raw-output '.dnsenvvars | map("export \(.name)='\''\(.value)
 KEY_LENGTH=$(bashio::config 'keylength')
 FULLCHAIN_FILE=$(bashio::config 'fullchainfile')
 KEY_FILE=$(bashio::config 'keyfile')
+DNS_SLEEP=$(bashio::config 'dnswaittime')
 
 DNS_CHALLENGE_ALIAS_PARAM=""
 
@@ -74,6 +75,7 @@ function issue {
     acme.sh --issue ${DOMAIN_PARAMS} \
         --keylength "$KEY_LENGTH" \
         --dns "$DNS_PROVIDER" \
+        --dnssleep "$DNS_SLEEP" \
         ${DNS_CHALLENGE_ALIAS_PARAM} \
         || { ret=$?; [ $ret -eq ${RENEW_SKIP} ] && return 0 || return $ret ;}
 }
